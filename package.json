@@ -29,7 +29,7 @@
   "homepage": "https://github.com/rustwasm/create-wasm-app#readme",
   "dependencies": {
     "boxicons": "^2.1.4",
-    "serde-json-path-com": "file:../pkg"
+    "serde-json-path": "^0.1.0"
   },
   "devDependencies": {
     "copy-webpack-plugin": "11.0.0",

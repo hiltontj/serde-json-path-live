@@ -1,5 +1,5 @@
 import css from "./style.css";
-const wasm = import("serde-json-path-com");
+const wasm = import("serde-json-path");
 
 const parse_json = async (json, path) => {
   let serde_json_path = await wasm;
