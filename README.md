@@ -2,7 +2,7 @@
 
 ## About
 
-Repository for hosting [serde-json-path-live](https://serdejsonpath.live).
+Repository for hosting the `$.erde.json.path` sandbox. Try it out: [serdejsonpath.live](https://serdejsonpath.live).
 
 ## License
 
