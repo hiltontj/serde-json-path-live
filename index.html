@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>JSONPath Sandbox</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <noscript
+      >This page contains webassembly and javascript content, please enable
+      javascript in your browser.</noscript
+    >
+    <script src="./bootstrap.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <div class="container-fluid text-center p-5">
+      <div class="row">
+        <div class="col"><h1>JSONPath Sandbox</h1></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col text-start">
+          <label for="json-path-query-input" class="form-label"
+            >JSONPath Query</label
+          >
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="json-path-query-input"
+              placeholder="Enter a JSONPath query, e.g., '$.foo.bar['baz']'"
+              aria-label="JSONPath Query String"
+            />
+            <button class="btn btn-success" type="button" id="button-run-query">
+              Run Query
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-lg-6">
+          <label for="json-input-textarea" class="form-label">JSON Input</label>
+          <button
+            class="btn btn-outline-secondary btn-sm float-end"
+            type="button"
+            id="button-fmt-json"
+          >
+            Format
+          </button>
+          <textarea
+            class="form-control text-nowrap"
+            id="json-input-textarea"
+            rows="10"
+            placeholder="Enter some JSON..."
+          ></textarea>
+        </div>
+        <div class="col-lg-6">
+          <label for="query-output-textarea" class="form-label"
+            >Query Result</label
+          >
+          <textarea
+            class="form-control"
+            id="query-output-textarea"
+            rows="10"
+            disabled
+          ></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="console-output-textarea" class="form-label"
+            >Console Output</label
+          >
+          <textarea
+            class="form-control"
+            id="console-output-textarea"
+            rows="5"
+            disabled
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <!-- <a href="https://" -->
+            <box-icon type='logo' name='github' color="white"></box-icon>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
