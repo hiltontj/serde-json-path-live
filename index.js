@@ -36,14 +36,11 @@ const defaultJson = {
         price: 22.99,
       },
     ],
-    bicycle: {
-      color: "red",
-      price: 399,
-    },
   },
 };
 
-const defaultQueryString = "$.store['books'][?@.author == 'Fyodor Dostoevsky']";
+const defaultQueryString =
+  "$.store.books[?@.author == 'Fyodor Dostoevsky'].title";
 
 const formatJson = (json) => JSON.stringify(json, null, 2);
 
@@ -52,15 +49,26 @@ jsonPathQueryInput.value = defaultQueryString;
 const getQuery = () => jsonPathQueryInput.value;
 
 const jsonInputTextarea = document.getElementById("json-input-textarea");
-jsonInputTextarea.value = formatJson(defaultJson)
+jsonInputTextarea.value = formatJson(defaultJson);
 const getParsedJson = () => JSON.parse(jsonInputTextarea.value);
 
 const queryOutputTextarea = document.getElementById("query-output-textarea");
 
+const errorOutputDiv = document.getElementById("error-output-div");
+const showErrorOutput = () => (errorOutputDiv.style.display = "block");
+const hideErrorOutput = () => (errorOutputDiv.style.display = "none");
+
 const consoleOutputTextarea = document.getElementById(
   "console-output-textarea"
 );
-const clearConsole = () => (consoleOutputTextarea.value = "");
+const clearConsole = () => {
+  consoleOutputTextarea.value = "";
+  hideErrorOutput();
+};
+const setConsole = (value) => {
+  consoleOutputTextarea.value = value;
+  showErrorOutput();
+};
 
 const fmtJsonButton = document.getElementById("button-fmt-json");
 fmtJsonButton.addEventListener("click", (_) => {
@@ -70,24 +78,24 @@ fmtJsonButton.addEventListener("click", (_) => {
     const formattedJson = formatJson(parsedJson);
     jsonInputTextarea.value = formattedJson;
   } catch (error) {
-    consoleOutputTextarea.value = error;
+    setConsole(error);
   }
 });
 
 const convertQueryResult = (query) => {
-    let converted = [];
-    for (const r of query) {
-        if (r instanceof Map) {
-            converted.push(Object.fromEntries(r))
-        } else if (r instanceof Array) {
-            const c = convertQueryResult(r);
-            converted.push(c);
-        } else {
-            converted.push(r);
-        }
+  let converted = [];
+  for (const r of query) {
+    if (r instanceof Map) {
+      converted.push(Object.fromEntries(r));
+    } else if (r instanceof Array) {
+      const c = convertQueryResult(r);
+      converted.push(c);
+    } else {
+      converted.push(r);
     }
-    return converted;
-}
+  }
+  return converted;
+};
 
 const runQueryButton = document.getElementById("button-run-query");
 runQueryButton.addEventListener("click", async (_) => {
@@ -96,6 +104,6 @@ runQueryButton.addEventListener("click", async (_) => {
     const query = await parse_json(getParsedJson(), getQuery());
     queryOutputTextarea.value = formatJson(convertQueryResult(query));
   } catch (error) {
-    consoleOutputTextarea.value = error;
+    setConsole(error);
   }
 });
