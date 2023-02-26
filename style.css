@@ -1,12 +1,37 @@
+html,
 body {
-  font-family: "Courier New", Courier, monospace;
+  height: 100%;
 }
 
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 1em;
-  width: 100%;
-  background-color: #212529;
+body {
+  font-family: "Source Code Pro", "Courier New", Courier, monospace;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  flex: 0 0 auto;
+}
+
+.body {
+  flex: 1 1 auto;
+}
+
+.footer {
+  flex: 0 0 auto;
   border-top: 1px solid #4f5153;
+}
+
+.form-control:disabled {
+  background-color: var(--bs-form-control-disabled-bg);
+  opacity: 1;
+  color: #e5840f;
+}
+
+.clr-orange {
+  color: #e5840f;
 }

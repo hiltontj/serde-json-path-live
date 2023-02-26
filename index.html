@@ -2,12 +2,17 @@
 <html data-bs-theme="dark">
   <head>
     <meta charset="utf-8" />
-    <title>JSONPath Sandbox</title>
+    <title>serde_json_path</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro"
     />
   </head>
   <body>
@@ -22,108 +27,136 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <div class="container-fluid text-center p-5">
-      <div class="row">
-        <div class="col"><h1>JSONPath Sandbox</h1></div>
+    <div class="main container-fluid text-center p-5">
+      <div class="row header">
+        <div class="col"><h1 class="clr-orange">$.erde.json.path</h1></div>
       </div>
-      <div class="row mb-3">
-        <div class="col text-start">
-          <label for="json-path-query-input" class="form-label"
-            >JSONPath Query</label
-          >
-          <div class="input-group">
-            <input
-              type="text"
-              class="form-control font-monospace"
-              id="json-path-query-input"
-              placeholder="Enter a JSONPath query, e.g., '$.foo.bar['baz']'"
-              aria-label="JSONPath Query String"
-            />
-            <button
-              class="btn btn-success fw-bold"
-              type="button"
-              id="button-run-query"
-            >
-              Run Query
-            </button>
+      <div class="row body">
+        <div class="col">
+          <div class="container-fluid main">
+            <div class="row mb-3 header">
+              <div class="col text-start">
+                <label for="json-path-query-input" class="form-label text-muted"
+                  >JSONPath Query</label
+                >
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control font-monospace clr-orange"
+                    id="json-path-query-input"
+                    placeholder="Enter a JSONPath query, e.g., '$.foo.bar['baz']'"
+                    aria-label="JSONPath Query String"
+                    spellcheck="false"
+                  />
+                  <button
+                    class="btn btn-primary fw-bold"
+                    type="button"
+                    id="button-run-query"
+                  >
+                    Run Query
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3 body">
+              <div class="col-md-6 text-start">
+                <label for="json-input-textarea" class="form-label text-muted"
+                  >JSON Input</label
+                >
+                <button
+                  class="btn btn-outline-secondary btn-sm float-end"
+                  type="button"
+                  id="button-fmt-json"
+                >
+                  Format JSON
+                </button>
+                <textarea
+                  class="form-control text-nowrap font-monospace"
+                  id="json-input-textarea"
+                  rows="11"
+                  placeholder="Enter some JSON..."
+                  spellcheck="false"
+                ></textarea>
+              </div>
+              <div class="col-md-6 text-start">
+                <label for="query-output-textarea" class="form-label text-muted"
+                  >Query Result</label
+                >
+                <textarea
+                  class="form-control font-monospace"
+                  id="query-output-textarea"
+                  rows="11"
+                  placeholder="Hit Run Query..."
+                  spellcheck="false"
+                  disabled
+                ></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col" id="error-output-div" style="display: none">
+                <label
+                  for="console-output-textarea"
+                  class="form-label text-muted"
+                  >Error Output</label
+                >
+                <textarea
+                  class="form-control font-monospace"
+                  id="console-output-textarea"
+                  rows="4"
+                  spellcheck="false"
+                  disabled
+                ></textarea>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="json-input-textarea" class="form-label">JSON Input</label>
-          <button
-            class="btn btn-outline-secondary btn-sm float-end"
-            type="button"
-            id="button-fmt-json"
-          >
-            Format
-          </button>
-          <textarea
-            class="form-control text-nowrap font-monospace"
-            id="json-input-textarea"
-            rows="11"
-            placeholder="Enter some JSON..."
-          ></textarea>
-        </div>
-        <div class="col-md-6">
-          <label for="query-output-textarea" class="form-label"
-            >Query Result</label
-          >
-          <textarea
-            class="form-control font-monospace"
-            id="query-output-textarea"
-            rows="11"
-            placeholder="Hit Run Query..."
-            disabled
-          ></textarea>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col" id="error-output-div" style="display: none">
-          <label for="console-output-textarea" class="form-label"
-            >Error Output</label
-          >
-          <textarea
-            class="form-control font-monospace"
-            id="console-output-textarea"
-            rows="4"
-            disabled
-          ></textarea>
+      <div class="row footer">
+        <div class="col">
+          <div class="container text-center">
+            <div class="row my-3">
+              <div class="col text-muted fs-6">
+                Queries powered by Rust using the
+                <strong class="clr-orange">serde_json_path</strong> crate:
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <a
+                  href="https://github.com/hiltontj/serde_json_path"
+                  target="_blank"
+                  referrerpolicy="no-referrer"
+                  ><box-icon
+                    type="logo"
+                    name="github"
+                    color="#adb5bd"
+                  ></box-icon
+                ></a>
+                <a
+                  href="https://docs.rs/serde_json_path/latest/serde_json_path/"
+                  target="_blank"
+                  referrerpolicy="no-referrer"
+                  ><box-icon
+                    type="solid"
+                    name="file-doc"
+                    color="#adb5bd"
+                  ></box-icon
+                ></a>
+                <a
+                  href="https://crates.io/crates/serde_json_path"
+                  target="_blank"
+                  referrerpolicy="no-referrer"
+                  ><box-icon
+                    type="solid"
+                    name="package"
+                    color="#adb5bd"
+                  ></box-icon
+                ></a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <footer>
-      <div class="container text-center">
-        <div class="row my-3">
-          <div class="col text-muted fs-6">
-            This site is powered by Rust using the
-            <strong>serde_json_path</strong> crate.
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <a
-              href="https://github.com/hiltontj/serde_json_path"
-              target="_blank"
-              referrerpolicy="no-referrer"
-              ><box-icon type="logo" name="github" color="white"></box-icon
-            ></a>
-            <a
-              href="https://docs.rs/serde_json_path/latest/serde_json_path/"
-              target="_blank"
-              referrerpolicy="no-referrer"
-              ><box-icon type="solid" name="file-doc" color="white"></box-icon
-            ></a>
-            <a
-              href="https://crates.io/crates/serde_json_path"
-              target="_blank"
-              referrerpolicy="no-referrer"
-              ><box-icon type="solid" name="package" color="white"></box-icon
-            ></a>
-          </div>
-        </div>
-      </div>
-    </footer>
   </body>
 </html>

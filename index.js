@@ -10,30 +10,28 @@ const defaultJson = {
   store: {
     books: [
       {
-        category: "reference",
+        title: "Guns, Germs, and Steel",
         author: "Jared Diamond",
-        title: "Guns, Germs, & Steel",
-        price: 8.95,
+        category: "reference",
+        price: 24.99,
       },
       {
-        category: "fiction",
-        author: "Charles Dickens",
         title: "David Copperfield",
+        author: "Charles Dickens",
+        category: "fiction",
         price: 12.99,
       },
       {
-        category: "fiction",
-        author: "Herman Melville",
         title: "Moby Dick",
-        isbn: "0-553-21311-3",
+        author: "Herman Melville",
+        category: "fiction",
         price: 8.99,
       },
       {
-        category: "fiction",
+        title: "Crime and Punishment",
         author: "Fyodor Dostoevsky",
-        title: "Crime & Punishment",
-        isbn: "0-395-19395-8",
-        price: 22.99,
+        category: "fiction",
+        price: 19.99,
       },
     ],
   },
@@ -50,9 +48,12 @@ const getQuery = () => jsonPathQueryInput.value;
 
 const jsonInputTextarea = document.getElementById("json-input-textarea");
 jsonInputTextarea.value = formatJson(defaultJson);
+const initialTextAreaHeight = `${jsonInputTextarea.parentElement.scrollHeight}px`;
+jsonInputTextarea.style.height = initialTextAreaHeight;
 const getParsedJson = () => JSON.parse(jsonInputTextarea.value);
 
 const queryOutputTextarea = document.getElementById("query-output-textarea");
+queryOutputTextarea.style.height = initialTextAreaHeight;
 
 const errorOutputDiv = document.getElementById("error-output-div");
 const showErrorOutput = () => (errorOutputDiv.style.display = "block");
