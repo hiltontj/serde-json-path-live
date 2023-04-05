@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Col, Container, Row } from 'react-bootstrap';
+import Header from './components/Header';
+import QueryInput from './components/QueryInput';
+import Footer from './components/Footer';
+import { SerdeJsonPathProvider } from './context';
+import JsonInput from './components/JsonInput';
+import QueryOutput from './components/QueryOutput';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SerdeJsonPathProvider>
+      <Container fluid className='main'>
+        <Row className='header text-center'>
+          <Col><Header /></Col>
+        </Row>
+        <Row className='header mb-3'>
+          <Col><QueryInput /></Col>
+        </Row>
+        <Row className='body'>
+          <Col><JsonInput /></Col>
+          <Col><QueryOutput /></Col>
+        </Row>
+        <Row className='footer'>
+          <Col><Footer /></Col>
+        </Row>
+      </Container>
+    </SerdeJsonPathProvider>
   );
 }
 
