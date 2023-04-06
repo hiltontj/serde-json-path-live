@@ -10,7 +10,7 @@ export const load = async (dispatch: Dispatcher) => {
 
   dispatch({
     tag: 'Loaded',
-    parser: (json: any, query: string) => sjp.parse_json(json, query),
+    parser: sjp.parse_json,
     json,
     query,
   });

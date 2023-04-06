@@ -25,7 +25,7 @@ export function isReady(x: State): x is Ready {
 }
 
 export interface WithJsonPathParser {
-  parser: (json: any, query: string) => any[];
+  parser: (json: any, query: string) => any;
 }
 
 export interface WithJsonData {
