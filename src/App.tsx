@@ -11,7 +11,7 @@ import QueryOutput from './components/QueryOutput';
 function App() {
   return (
     <SerdeJsonPathProvider>
-      <Container fluid className='main'>
+      <Container className='main'>
         <Row className='header text-center'>
           <Col><Header /></Col>
         </Row>

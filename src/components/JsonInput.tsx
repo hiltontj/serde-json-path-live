@@ -23,6 +23,7 @@ const JsonInput = () => {
             tabSize={2}
             width='100%'
             height='100%'
+            showPrintMargin={false}
             value={json}
             onChange={(val, evt) => updateJson(val)}
           />

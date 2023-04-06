@@ -30,7 +30,11 @@ export const getJsonExample = () => ({
 });
 
 const QUERY_EXAMPLES: string[] = [
-  "$.store.books[?@.author == 'Fyodor Dostoevsky'].title",
+  "$.store.books[?@.author == 'Fyodor Dostoevsky']['title', 'author', 'price']",
+  "$.store.books[?search(@.author, 'Diamond|Dickens')]",
+  "$.store.books[?@.price < 20 && @.price > 10]",
+  "$..books[?@.price < 20].title",
+  "$..books[?@.category == 'reference'].*",
 ];
 
 export const getQueryExample = () => QUERY_EXAMPLES[Math.floor(Math.random() * QUERY_EXAMPLES.length)];

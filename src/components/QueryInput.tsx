@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button, Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
+import { BiRefresh } from 'react-icons/bi';
 import { useJsonData, useOutputUpdater, useParser, useQuery, useUpdateQuery } from '../context/hooks'
+import { getQueryExample } from '../helpers';
 
 const QueryInput = () => {
   const query = useQuery();
@@ -21,9 +23,13 @@ const QueryInput = () => {
       }   
     })()
   }, [json, query, parser, updateOutput]);
+
+  const handleRandomize = React.useCallback(() => {
+    updateQuery(getQueryExample());
+  }, [updateQuery]);
   
   return (
-    <Container>
+    <Container fluid>
       <Row>
         <Col>
           <InputGroup>
@@ -32,6 +38,7 @@ const QueryInput = () => {
               value={query}
               onChange={e => updateQuery(e.target.value)}
             />
+            <Button onClick={handleRandomize} variant='outline-secondary'><BiRefresh size={24} /></Button>
             <Button onClick={handleRunQuery}>Run Query</Button>
           </InputGroup>
         </Col>
