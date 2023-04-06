@@ -1,6 +1,6 @@
 import React from 'react';
 import { BsGithub } from 'react-icons/bs'
-import { BiFileBlank, BiPackage } from 'react-icons/bi'
+import { BiBookOpen, BiPackage } from 'react-icons/bi'
 import { Col, Container, Row } from 'react-bootstrap';
 
 const Footer = () => (
@@ -23,13 +23,13 @@ const Footer = () => (
           href="https://docs.rs/serde_json_path/latest/serde_json_path/"
           target='_blank'
           className='mx-1'
-        ><BiFileBlank color='#adb5bd' size={24} /></a>
+        ><BiBookOpen color='#adb5bd' size={26} /></a>
         <a
           rel='noreferrer'
           href="https://crates.io/crates/serde_json_path"
           target='_blank'
           className='mx-1'
-        ><BiPackage type='logo' color='#adb5bd' size={24} /></a>
+        ><BiPackage type='logo' color='#adb5bd' size={26} /></a>
       </Col>
     </Row>
   </Container>
