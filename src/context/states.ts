@@ -18,7 +18,9 @@ export type Ready = Tagged<'Ready'>
   & WithJsonPathParser
   & WithJsonData
   & WithQuery
-  & WithQueryOutput;
+  & WithQueryOutput
+  & WithToggleInfoBanner
+;
 
 export function isReady(x: State): x is Ready {
   return x.tag === 'Ready';
@@ -38,4 +40,8 @@ export interface WithQuery {
 
 export interface WithQueryOutput {
   output: any[];
+}
+
+export interface WithToggleInfoBanner {
+  showInfoBanner: boolean;
 }

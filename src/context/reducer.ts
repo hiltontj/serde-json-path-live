@@ -22,6 +22,7 @@ const reduceLoading: Reducer<States.Loading> = (state, action) => {
       query,
       parser,
       output: [],
+      showInfoBanner: false,
     };
   }
   return state;
@@ -37,6 +38,9 @@ const reduceReady: Reducer<States.Ready> = (state, action) => {
   } else if (Actions.isUpdateQueryOutput(action)) {
     const { output } = action;
     return { ...state, output }
+  } else if (Actions.isToggleInfoBanner(action)) {
+    const { showInfoBanner } = action;
+    return { ...state, showInfoBanner };
   }
   return state;
 }

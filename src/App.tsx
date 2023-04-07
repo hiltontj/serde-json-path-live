@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import { SerdeJsonPathProvider } from './context';
 import JsonInput from './components/JsonInput';
 import QueryOutput from './components/QueryOutput';
+import InfoBanner from './components/InfoBanner';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Row className='header text-center'>
           <Col><Header /></Col>
         </Row>
+        <InfoBanner />
         <Row className='header mb-3'>
           <Col><QueryInput /></Col>
         </Row>

@@ -1,11 +1,12 @@
 import { Tagged } from ".";
-import { WithJsonData, WithJsonPathParser, WithQuery, WithQueryOutput } from "./states";
+import { WithJsonData, WithJsonPathParser, WithQuery, WithQueryOutput, WithToggleInfoBanner } from "./states";
 
 export type Action =
   | Loaded
   | UpdateQuery
   | UpdateJson
   | UpdateQueryOutput
+  | ToggleInfoBanner
 ;
 
 type Loaded = Tagged<'Loaded'>
@@ -43,4 +44,12 @@ type UpdateQueryOutput = Tagged<'UpdateQueryOutput'>
 
 export function isUpdateQueryOutput(x: Action): x is UpdateQueryOutput {
   return x.tag === 'UpdateQueryOutput';
+}
+
+type ToggleInfoBanner = Tagged<'ToggleInfoBanner'>
+  & WithToggleInfoBanner
+;
+
+export function isToggleInfoBanner(x: Action): x is ToggleInfoBanner {
+  return x.tag === 'ToggleInfoBanner';
 }

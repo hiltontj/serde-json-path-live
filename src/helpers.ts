@@ -35,6 +35,7 @@ const QUERY_EXAMPLES: string[] = [
   "$.store.books[?@.price < 20 && @.price > 10]",
   "$..books[?@.price < 20].title",
   "$..books[?@.category == 'reference'].*",
+  "$.store.books[::-1]",
 ];
 
 export const getQueryExample = () => QUERY_EXAMPLES[Math.floor(Math.random() * QUERY_EXAMPLES.length)];

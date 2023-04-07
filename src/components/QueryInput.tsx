@@ -20,7 +20,7 @@ const QueryInput = () => {
   }, [json, query, parser, updateOutput]);
 
   return (
-    <Container fluid>
+    <Container>
       <Row>
         <Col>
           <InputGroup>

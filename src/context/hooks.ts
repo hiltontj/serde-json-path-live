@@ -59,3 +59,19 @@ export const useOutputUpdater = (): OutputUpdaterFn => {
   const dispatch = useSerdeJsonPathDispatch();
   return (output: any[]) => dispatch({ tag: 'UpdateQueryOutput', output });
 }
+
+export type ToggleInfoBannerFn = (show: boolean) => void;
+
+export const useToggleInfoBanner = (): ToggleInfoBannerFn => {
+  const dispatch = useSerdeJsonPathDispatch();
+  return (show: boolean) => dispatch({ tag: 'ToggleInfoBanner', showInfoBanner: show });
+}
+
+export const useShowInfoBanner = (): boolean => {
+  const state = useSerdeJsonPathState();
+  if (States.isReady(state)) {
+    return state.showInfoBanner;
+  } else {
+    throw new Error('attempted to useShowInfoBanner before ready');
+  }
+}
