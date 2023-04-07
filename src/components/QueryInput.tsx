@@ -1,8 +1,6 @@
 import React from 'react'
 import { Button, Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
-import { BiRefresh } from 'react-icons/bi';
 import { useJsonData, useOutputUpdater, useParser, useQuery, useUpdateQuery } from '../context/hooks'
-import { getQueryExample } from '../helpers';
 
 const QueryInput = () => {
   const query = useQuery();
