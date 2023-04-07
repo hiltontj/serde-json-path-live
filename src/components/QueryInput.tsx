@@ -26,7 +26,7 @@ const QueryInput = () => {
     } catch(e) {
       const message = `Error: ${e as string}`;
       setError(message);
-    }   
+    }
   }, [json, query, parser, updateOutput, setError]);
 
   return (
