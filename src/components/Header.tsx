@@ -1,9 +1,10 @@
 import React from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { BiInfoCircle } from 'react-icons/bi';
-import { useToggleInfoBanner } from '../context/hooks';
+import { useShowInfoBanner, useToggleInfoBanner } from '../context/hooks';
 
 const Header = () => {
+  const showAbout = !useShowInfoBanner();
   const toggleAbout = useToggleInfoBanner();
   
   return (
@@ -15,8 +16,9 @@ const Header = () => {
             onClick={() => toggleAbout(true)}
             variant='outline-secondary'
             size='sm'
+            disabled={!showAbout}
           >
-            <BiInfoCircle size={18} /> About
+            <BiInfoCircle size={18} />{showAbout && ' About'}
           </Button>
         </Col>
       </Row>
