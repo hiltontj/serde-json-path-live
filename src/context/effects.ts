@@ -1,6 +1,6 @@
 import { Dispatcher } from ".";
 import { getJsonExample, getQueryExample } from "../helpers";
-const wasm = import('serde-json-path');
+const wasm = import("serde-json-path");
 
 export const load = async (dispatch: Dispatcher) => {
   const sjp = await wasm;
@@ -8,9 +8,9 @@ export const load = async (dispatch: Dispatcher) => {
   const query = getQueryExample();
 
   dispatch({
-    tag: 'Loaded',
+    tag: "Loaded",
     parser: sjp.parse_json,
     json,
     query,
   });
-}
+};

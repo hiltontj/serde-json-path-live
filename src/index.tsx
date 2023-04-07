@@ -1,18 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import "@fontsource/source-code-pro"
-import 'ace-builds/src-noconflict/ace';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "@fontsource/source-code-pro";
+import "ace-builds/src-noconflict/ace";
 // import "ace-builds/src-noconflict/worker-json";
-import "ace-builds/webpack-resolver"
+import "ace-builds/webpack-resolver";
 import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-one_dark";
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>

@@ -25,8 +25,8 @@ export const getJsonExample = () => ({
         category: "fiction",
         price: 19.99,
       },
-     ],
-   },
+    ],
+  },
 });
 
 const QUERY_EXAMPLES: string[] = [
@@ -38,6 +38,5 @@ const QUERY_EXAMPLES: string[] = [
   "$.store.books[::-1]",
 ];
 
-export const getQueryExample = () => QUERY_EXAMPLES[Math.floor(Math.random() * QUERY_EXAMPLES.length)];
-
-
+export const getQueryExample = () =>
+  QUERY_EXAMPLES[Math.floor(Math.random() * QUERY_EXAMPLES.length)];

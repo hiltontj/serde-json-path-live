@@ -1,31 +1,28 @@
 import { Tagged } from ".";
 
-export type State =
-  | Loading
-  | Ready;
+export type State = Loading | Ready;
 
 export const initialize = (): Loading => ({
-  tag: 'Loading'
+  tag: "Loading",
 });
 
-export type Loading = Tagged<'Loading'>;
+export type Loading = Tagged<"Loading">;
 
 export function isLoading(x: State): x is Loading {
-  return x.tag === 'Loading';
+  return x.tag === "Loading";
 }
 
-export type Ready = Tagged<'Ready'>
-  & WithJsonPathParser
-  & WithJsonData
-  & WithQuery
-  & WithQueryOutput
-  & WithShowInfoBanner
-  & WithError
-  & WithShowError
-;
+export type Ready = Tagged<"Ready"> &
+  WithJsonPathParser &
+  WithJsonData &
+  WithQuery &
+  WithQueryOutput &
+  WithShowInfoBanner &
+  WithError &
+  WithShowError;
 
 export function isReady(x: State): x is Ready {
-  return x.tag === 'Ready';
+  return x.tag === "Ready";
 }
 
 export interface WithJsonPathParser {

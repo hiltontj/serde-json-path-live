@@ -7,10 +7,9 @@ html {
   background-color: #282c34;
 }
 
-
 body {
   margin: 0;
-  font-family: 'Source Code Pro', 'Courier New', Courier, monospace !important;
+  font-family: "Source Code Pro", "Courier New", Courier, monospace !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #282c34;

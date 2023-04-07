@@ -1,6 +1,6 @@
-import React from 'react';
-import { Alert, Col, Container, Row } from 'react-bootstrap';
-import { useError, useShowError, useToggleError } from '../context/hooks';
+import React from "react";
+import { Alert, Col, Container, Row } from "react-bootstrap";
+import { useError, useShowError, useToggleError } from "../context/hooks";
 
 const ErrorBanner = () => {
   const error = useError();
@@ -10,11 +10,11 @@ const ErrorBanner = () => {
   if (!showError) {
     return null;
   }
-  
+
   return (
     <Row>
       <Col>
-        <Alert variant='danger' dismissible onClose={() => toggleError(false)}>
+        <Alert variant="danger" dismissible onClose={() => toggleError(false)}>
           <Container>
             <Row>
               <Col>

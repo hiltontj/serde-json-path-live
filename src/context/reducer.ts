@@ -4,31 +4,31 @@ import * as States from "./states";
 type Reducer<S> = (state: S, action: Actions.Action) => States.State;
 
 const reducer: Reducer<States.State> = (state, action) => {
-  console.debug('REDUCING', action, state);
+  console.debug("REDUCING", action, state);
   if (States.isLoading(state)) {
     return reduceLoading(state, action);
   } else if (States.isReady(state)) {
     return reduceReady(state, action);
   }
   return state;
-}
+};
 
 const reduceLoading: Reducer<States.Loading> = (state, action) => {
   if (Actions.isLoaded(action)) {
     const { json, query, parser } = action;
     return {
-      tag: 'Ready',
+      tag: "Ready",
       json,
       query,
       parser,
       queryOutput: [],
       showInfoBanner: false,
-      error: '',
+      error: "",
       showError: false,
     };
   }
   return state;
-}
+};
 
 const reduceReady: Reducer<States.Ready> = (state, action) => {
   if (Actions.isUpdateJson(action)) {
@@ -36,10 +36,10 @@ const reduceReady: Reducer<States.Ready> = (state, action) => {
     return { ...state, json };
   } else if (Actions.isUpdateQuery(action)) {
     const { query } = action;
-    return {...state, query };
+    return { ...state, query };
   } else if (Actions.isUpdateQueryOutput(action)) {
     const { queryOutput: output } = action;
-    return { ...state, queryOutput: output }
+    return { ...state, queryOutput: output };
   } else if (Actions.isToggleInfoBanner(action)) {
     const { showInfoBanner } = action;
     return { ...state, showInfoBanner };
@@ -48,9 +48,9 @@ const reduceReady: Reducer<States.Ready> = (state, action) => {
     return { ...state, error, showError: true };
   } else if (Actions.isToggleError(action)) {
     const { showError } = action;
-    return { ...state, showError, error: '' };
+    return { ...state, showError, error: "" };
   }
   return state;
-}
+};
 
 export default reducer;
