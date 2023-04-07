@@ -21,8 +21,10 @@ const reduceLoading: Reducer<States.Loading> = (state, action) => {
       json,
       query,
       parser,
-      output: [],
+      queryOutput: [],
       showInfoBanner: false,
+      error: '',
+      showError: false,
     };
   }
   return state;
@@ -36,11 +38,17 @@ const reduceReady: Reducer<States.Ready> = (state, action) => {
     const { query } = action;
     return {...state, query };
   } else if (Actions.isUpdateQueryOutput(action)) {
-    const { output } = action;
-    return { ...state, output }
+    const { queryOutput: output } = action;
+    return { ...state, queryOutput: output }
   } else if (Actions.isToggleInfoBanner(action)) {
     const { showInfoBanner } = action;
     return { ...state, showInfoBanner };
+  } else if (Actions.isSetError(action)) {
+    const { error } = action;
+    return { ...state, error, showError: true };
+  } else if (Actions.isToggleError(action)) {
+    const { showError } = action;
+    return { ...state, showError, error: '' };
   }
   return state;
 }

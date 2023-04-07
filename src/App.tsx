@@ -8,6 +8,7 @@ import { SerdeJsonPathProvider } from './context';
 import JsonInput from './components/JsonInput';
 import QueryOutput from './components/QueryOutput';
 import InfoBanner from './components/InfoBanner';
+import ErrorBanner from './components/ErrorBanner';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Row className='header mb-3'>
           <Col><QueryInput /></Col>
         </Row>
+        <ErrorBanner />
         <Row className='body'>
           <Col><JsonInput /></Col>
           <Col><QueryOutput /></Col>

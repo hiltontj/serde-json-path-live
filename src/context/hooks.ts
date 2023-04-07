@@ -47,7 +47,7 @@ export const useParser = (): ParseFn => {
 export const useOutput = (): any[] => {
   const state = useSerdeJsonPathState();
   if (States.isReady(state)) {
-    return state.output;
+    return state.queryOutput;
   } else {
     throw new Error('attempted to useOutput before ready');
   }
@@ -57,7 +57,7 @@ export type OutputUpdaterFn = (output: any[]) => void
 
 export const useOutputUpdater = (): OutputUpdaterFn => {
   const dispatch = useSerdeJsonPathDispatch();
-  return (output: any[]) => dispatch({ tag: 'UpdateQueryOutput', output });
+  return (output: any[]) => dispatch({ tag: 'UpdateQueryOutput', queryOutput: output });
 }
 
 export type ToggleInfoBannerFn = (show: boolean) => void;
@@ -74,4 +74,35 @@ export const useShowInfoBanner = (): boolean => {
   } else {
     throw new Error('attempted to useShowInfoBanner before ready');
   }
+}
+
+export const useError = (): string => {
+  const state = useSerdeJsonPathState();
+  if (States.isReady(state)) {
+    return state.error;
+  } else {
+    throw new Error('attempted to useError before ready');
+  }
+}
+
+export type SetErrorFn = (message: string) => void;
+
+export const useSetError = (): SetErrorFn => {
+  const dispatch = useSerdeJsonPathDispatch();
+  return (error: string) => dispatch({ tag: 'SetError', error });
+}
+
+export const useShowError = (): boolean => {
+  const state = useSerdeJsonPathState();
+  if (States.isReady(state)) {
+    return state.showError
+  } else {
+    throw new Error('attempted to useShowError before ready');
+  }
+}
+export type ToggleErrorFn = (show: boolean) => void;
+
+export const useToggleError = (): ToggleErrorFn => {
+  const dispatch = useSerdeJsonPathDispatch();
+  return (showError: boolean) => dispatch({ tag: 'ToggleError', showError })
 }

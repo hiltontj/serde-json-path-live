@@ -1,5 +1,5 @@
 import { Tagged } from ".";
-import { WithJsonData, WithJsonPathParser, WithQuery, WithQueryOutput, WithToggleInfoBanner } from "./states";
+import { WithError, WithJsonData, WithJsonPathParser, WithQuery, WithQueryOutput, WithShowError, WithShowInfoBanner } from "./states";
 
 export type Action =
   | Loaded
@@ -7,6 +7,8 @@ export type Action =
   | UpdateJson
   | UpdateQueryOutput
   | ToggleInfoBanner
+  | SetError
+  | ToggleError
 ;
 
 type Loaded = Tagged<'Loaded'>
@@ -47,9 +49,26 @@ export function isUpdateQueryOutput(x: Action): x is UpdateQueryOutput {
 }
 
 type ToggleInfoBanner = Tagged<'ToggleInfoBanner'>
-  & WithToggleInfoBanner
+  & WithShowInfoBanner
 ;
 
 export function isToggleInfoBanner(x: Action): x is ToggleInfoBanner {
   return x.tag === 'ToggleInfoBanner';
+}
+
+type SetError = Tagged<'SetError'>
+  & WithError
+;
+
+export function isSetError(x: Action): x is SetError {
+  return x.tag === 'SetError';
+}
+
+
+type ToggleError = Tagged<'ToggleError'>
+  & WithShowError
+;
+
+export function isToggleError(x: Action): x is ToggleError {
+  return x.tag === 'ToggleError';
 }

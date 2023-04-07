@@ -19,7 +19,9 @@ export type Ready = Tagged<'Ready'>
   & WithJsonData
   & WithQuery
   & WithQueryOutput
-  & WithToggleInfoBanner
+  & WithShowInfoBanner
+  & WithError
+  & WithShowError
 ;
 
 export function isReady(x: State): x is Ready {
@@ -39,9 +41,17 @@ export interface WithQuery {
 }
 
 export interface WithQueryOutput {
-  output: any[];
+  queryOutput: any[];
 }
 
-export interface WithToggleInfoBanner {
+export interface WithShowInfoBanner {
   showInfoBanner: boolean;
+}
+
+export interface WithShowError {
+  showError: boolean;
+}
+
+export interface WithError {
+  error: string;
 }

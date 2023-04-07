@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
-import { useJsonData, useOutputUpdater, useParser, useQuery, useUpdateQuery } from '../context/hooks'
+import { BiError } from 'react-icons/bi';
+import { useJsonData, useOutputUpdater, useParser, useQuery, useSetError, useShowError, useToggleError, useUpdateQuery } from '../context/hooks'
 
 const QueryInput = () => {
   const query = useQuery();
@@ -8,6 +9,14 @@ const QueryInput = () => {
   const json = useJsonData();
   const parser = useParser();
   const updateOutput = useOutputUpdater();
+  const showError = useShowError();
+  const setError = useSetError();
+  const toggleError = useToggleError();
+
+  const handleQueryUpdate = React.useCallback((query: string) => {
+    toggleError(false);
+    updateQuery(query);
+  }, [toggleError, updateQuery])
 
   const handleRunQuery = React.useCallback(() => {
     try {
@@ -15,9 +24,10 @@ const QueryInput = () => {
       const output = parser(parsedJson, query);
       updateOutput(output);
     } catch(e) {
-      console.error('error parsing and querying JSON', e);
+      const message = `Error: ${e as string}`;
+      setError(message);
     }   
-  }, [json, query, parser, updateOutput]);
+  }, [json, query, parser, updateOutput, setError]);
 
   return (
     <Container>
@@ -27,9 +37,13 @@ const QueryInput = () => {
             <Form.Control
               placeholder='Enter a JSONPath query...'
               value={query}
-              onChange={e => updateQuery(e.target.value)}
+              onChange={e => handleQueryUpdate(e.target.value)}
             />
-            <Button onClick={handleRunQuery}>Run Query</Button>
+            {!showError ? (
+              <Button onClick={handleRunQuery}>Run Query</Button>
+            ) : (
+              <Button variant='danger'><BiError size={18} /> Error</Button> 
+            )}
           </InputGroup>
         </Col>
       </Row>
