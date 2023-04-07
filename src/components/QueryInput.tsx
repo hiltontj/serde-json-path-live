@@ -12,22 +12,15 @@ const QueryInput = () => {
   const updateOutput = useOutputUpdater();
 
   const handleRunQuery = React.useCallback(() => {
-    (async () => {
-      try {
-        console.debug('query', json, query);
-        const parsedJson = JSON.parse(json);
-        const output = await parser(parsedJson, query);
-        updateOutput(output);
-      } catch(e) {
-        console.error('error parsing and querying JSON', e);
-      }   
-    })()
+    try {
+      const parsedJson = JSON.parse(json);
+      const output = parser(parsedJson, query);
+      updateOutput(output);
+    } catch(e) {
+      console.error('error parsing and querying JSON', e);
+    }   
   }, [json, query, parser, updateOutput]);
 
-  const handleRandomize = React.useCallback(() => {
-    updateQuery(getQueryExample());
-  }, [updateQuery]);
-  
   return (
     <Container fluid>
       <Row>
@@ -38,7 +31,6 @@ const QueryInput = () => {
               value={query}
               onChange={e => updateQuery(e.target.value)}
             />
-            <Button onClick={handleRandomize} variant='outline-secondary'><BiRefresh size={24} /></Button>
             <Button onClick={handleRunQuery}>Run Query</Button>
           </InputGroup>
         </Col>
