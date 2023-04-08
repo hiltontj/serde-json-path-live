@@ -1,5 +1,4 @@
 import React from "react";
-import { JsonPath } from "serde-json-path";
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { BiError } from "react-icons/bi";
 import {
@@ -30,15 +29,17 @@ const QueryInput = () => {
   );
 
   const handleRunQuery = React.useCallback(() => {
-    try {
-      const parsedJson = JSON.parse(json);
-      const path = JsonPath.parse(query);
-      const output = path.query(parsedJson);
-      updateOutput(output);
-    } catch (e) {
-      const message = `Error: ${e as string}`;
-      setError(message);
-    }
+    import("serde-json-path")
+      .then(({ JsonPath }) => {
+        const parsedJson = JSON.parse(json);
+        const path = JsonPath.parse(query);
+        const output = path.query(parsedJson);
+        updateOutput(output);
+      })
+      .catch((e) => {
+        const message = `Error: ${e as string}`;
+        setError(message);
+      });
   }, [json, query, updateOutput, setError]);
 
   return (
