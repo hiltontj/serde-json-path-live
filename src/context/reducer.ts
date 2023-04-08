@@ -15,12 +15,11 @@ const reducer: Reducer<States.State> = (state, action) => {
 
 const reduceLoading: Reducer<States.Loading> = (state, action) => {
   if (Actions.isLoaded(action)) {
-    const { json, query, parser } = action;
+    const { json, query } = action;
     return {
       tag: "Ready",
       json,
       query,
-      parser,
       queryOutput: [],
       showInfoBanner: false,
       error: "",

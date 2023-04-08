@@ -2,7 +2,6 @@ import { Tagged } from ".";
 import {
   WithError,
   WithJsonData,
-  WithJsonPathParser,
   WithQuery,
   WithQueryOutput,
   WithShowError,
@@ -18,7 +17,7 @@ export type Action =
   | SetError
   | ToggleError;
 
-type Loaded = Tagged<"Loaded"> & WithJsonPathParser & WithJsonData & WithQuery;
+type Loaded = Tagged<"Loaded"> & WithJsonData & WithQuery;
 
 export function isLoaded(x: Action): x is Loaded {
   return x.tag === "Loaded";

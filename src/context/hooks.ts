@@ -33,17 +33,6 @@ export const useJsonDataUpdater = (): JsonDataUpdater => {
   return (json: string) => dispatch({ tag: "UpdateJson", json });
 };
 
-export type ParseFn = (json: any, query: string) => any[];
-
-export const useParser = (): ParseFn => {
-  const state = useSerdeJsonPathState();
-  if (States.isReady(state)) {
-    return (json: any, query: string) => state.parser(json, query);
-  } else {
-    throw new Error("attempted to useParser before ready");
-  }
-};
-
 export const useOutput = (): any[] => {
   const state = useSerdeJsonPathState();
   if (States.isReady(state)) {

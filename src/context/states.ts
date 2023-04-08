@@ -13,7 +13,6 @@ export function isLoading(x: State): x is Loading {
 }
 
 export type Ready = Tagged<"Ready"> &
-  WithJsonPathParser &
   WithJsonData &
   WithQuery &
   WithQueryOutput &
@@ -23,10 +22,6 @@ export type Ready = Tagged<"Ready"> &
 
 export function isReady(x: State): x is Ready {
   return x.tag === "Ready";
-}
-
-export interface WithJsonPathParser {
-  parser: (json: any, query: string) => any;
 }
 
 export interface WithJsonData {

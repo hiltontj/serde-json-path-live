@@ -1,10 +1,10 @@
 import React from "react";
+import { JsonPath } from "serde-json-path";
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { BiError } from "react-icons/bi";
 import {
   useJsonData,
   useOutputUpdater,
-  useParser,
   useQuery,
   useSetError,
   useShowError,
@@ -16,7 +16,6 @@ const QueryInput = () => {
   const query = useQuery();
   const updateQuery = useUpdateQuery();
   const json = useJsonData();
-  const parser = useParser();
   const updateOutput = useOutputUpdater();
   const showError = useShowError();
   const setError = useSetError();
@@ -33,13 +32,14 @@ const QueryInput = () => {
   const handleRunQuery = React.useCallback(() => {
     try {
       const parsedJson = JSON.parse(json);
-      const output = parser(parsedJson, query);
+      const path = JsonPath.parse(query);
+      const output = path.query(parsedJson);
       updateOutput(output);
     } catch (e) {
       const message = `Error: ${e as string}`;
       setError(message);
     }
-  }, [json, query, parser, updateOutput, setError]);
+  }, [json, query, updateOutput, setError]);
 
   return (
     <Container>
