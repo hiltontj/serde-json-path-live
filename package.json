@@ -32,9 +32,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "craco eject",
-    "fmt": "prettier --write .",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "fmt": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [
