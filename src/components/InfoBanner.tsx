@@ -16,7 +16,7 @@ const SerdeJsonPathNpmLink = () => (
 
 const JsonPathSpecLink = () => (
   <a
-    href="https://www.ietf.org/archive/id/draft-ietf-jsonpath-base-12.html"
+    href="https://www.ietf.org/archive/id/draft-ietf-jsonpath-base-20.html"
     target="_blank"
     rel="noreferrer"
   >
