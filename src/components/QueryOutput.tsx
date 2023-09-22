@@ -19,7 +19,6 @@ const convert = (res: any): any => {
 
 const QueryOutput = () => {
   const output = useOutput();
-  console.debug("output", output);
   const formattedOutput = React.useMemo(() => {
     return JSON.stringify(convert(output), null, 2);
   }, [output]);

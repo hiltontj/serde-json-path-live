@@ -4,7 +4,6 @@ import * as States from "./states";
 type Reducer<S> = (state: S, action: Actions.Action) => States.State;
 
 const reducer: Reducer<States.State> = (state, action) => {
-  console.debug("REDUCING", action, state);
   if (States.isLoading(state)) {
     return reduceLoading(state, action);
   } else if (States.isReady(state)) {
