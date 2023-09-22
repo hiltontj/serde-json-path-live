@@ -5,7 +5,6 @@ import {
   WithQuery,
   WithQueryOutput,
   WithShowError,
-  WithShowInfoBanner,
 } from "./states";
 
 export type Action =
@@ -41,7 +40,7 @@ export function isUpdateQueryOutput(x: Action): x is UpdateQueryOutput {
   return x.tag === "UpdateQueryOutput";
 }
 
-type ToggleInfoBanner = Tagged<"ToggleInfoBanner"> & WithShowInfoBanner;
+type ToggleInfoBanner = Tagged<"ToggleInfoBanner">;
 
 export function isToggleInfoBanner(x: Action): x is ToggleInfoBanner {
   return x.tag === "ToggleInfoBanner";

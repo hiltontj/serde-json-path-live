@@ -26,6 +26,7 @@ const QueryOutput = () => {
 
   return (
     <Container
+      fluid
       style={{ display: "flex", flexDirection: "column", height: "100%" }}
     >
       <Row className="header">

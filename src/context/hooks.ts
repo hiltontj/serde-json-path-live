@@ -54,8 +54,7 @@ export type ToggleInfoBannerFn = (show: boolean) => void;
 
 export const useToggleInfoBanner = (): ToggleInfoBannerFn => {
   const dispatch = useSerdeJsonPathDispatch();
-  return (show: boolean) =>
-    dispatch({ tag: "ToggleInfoBanner", showInfoBanner: show });
+  return () => dispatch({ tag: "ToggleInfoBanner" });
 };
 
 export const useShowInfoBanner = (): boolean => {

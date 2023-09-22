@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { BiError } from "react-icons/bi";
 import {
   useJsonData,
@@ -43,23 +43,25 @@ const QueryInput = () => {
   }, [json, query, updateOutput, setError]);
 
   return (
-    <Container>
+    <Container fluid>
       <Row>
-        <Col>
-          <InputGroup>
-            <Form.Control
-              placeholder="Enter a JSONPath query..."
-              value={query}
-              onChange={(e) => handleQueryUpdate(e.target.value)}
-            />
-            {!showError ? (
-              <Button onClick={handleRunQuery}>Run Query</Button>
-            ) : (
-              <Button variant="danger">
-                <BiError size={18} /> Error
-              </Button>
-            )}
-          </InputGroup>
+        <Col xs={12} sm className="my-2">
+          <Form.Control
+            placeholder="Enter a JSONPath query..."
+            value={query}
+            onChange={(e) => handleQueryUpdate(e.target.value)}
+          />
+        </Col>
+        <Col xs={12} sm={3} lg={2} className="my-2">
+          {!showError ? (
+            <Button className="w-100" onClick={handleRunQuery}>
+              Run Query
+            </Button>
+          ) : (
+            <Button className="w-100" variant="danger">
+              <BiError size={18} /> Error
+            </Button>
+          )}
         </Col>
       </Row>
     </Container>

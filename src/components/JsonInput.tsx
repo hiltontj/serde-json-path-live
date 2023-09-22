@@ -10,6 +10,7 @@ const JsonInput = () => {
   return (
     <Container
       style={{ display: "flex", flexDirection: "column", height: "100%" }}
+      fluid
     >
       <Row className="header">
         <Col className="text-center">JSON Input</Col>

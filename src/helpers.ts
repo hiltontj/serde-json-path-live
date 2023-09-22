@@ -36,6 +36,7 @@ const QUERY_EXAMPLES: string[] = [
   "$..books[?@.price < 20].title",
   "$..books[?@.category == 'reference'].*",
   "$.store.books[::-1]",
+  "$..author",
 ];
 
 export const getQueryExample = () =>

@@ -15,11 +15,9 @@ const ErrorBanner = () => {
     <Row>
       <Col>
         <Alert variant="danger" dismissible onClose={() => toggleError(false)}>
-          <Container>
+          <Container fluid>
             <Row>
-              <Col>
-                <pre>{error}</pre>
-              </Col>
+              <Col>{error}</Col>
             </Row>
           </Container>
         </Alert>

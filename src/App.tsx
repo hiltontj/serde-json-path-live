@@ -13,7 +13,7 @@ import ErrorBanner from "./components/ErrorBanner";
 function App() {
   return (
     <SerdeJsonPathProvider>
-      <Container className="main">
+      <Container className="main" fluid="xl">
         <Row className="header text-center">
           <Col>
             <Header />
@@ -27,10 +27,10 @@ function App() {
         </Row>
         <ErrorBanner />
         <Row className="body">
-          <Col>
+          <Col xs={12} md={12} lg>
             <JsonInput />
           </Col>
-          <Col>
+          <Col xs={12} md={12} lg>
             <QueryOutput />
           </Col>
         </Row>

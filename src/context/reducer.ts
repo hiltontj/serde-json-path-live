@@ -40,8 +40,7 @@ const reduceReady: Reducer<States.Ready> = (state, action) => {
     const { queryOutput: output } = action;
     return { ...state, queryOutput: output };
   } else if (Actions.isToggleInfoBanner(action)) {
-    const { showInfoBanner } = action;
-    return { ...state, showInfoBanner };
+    return { ...state, showInfoBanner: !state.showInfoBanner };
   } else if (Actions.isSetError(action)) {
     const { error } = action;
     return { ...state, error, showError: true };
