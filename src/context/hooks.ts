@@ -50,6 +50,24 @@ export const useOutputUpdater = (): OutputUpdaterFn => {
     dispatch({ tag: "UpdateQueryOutput", queryOutput: output });
 };
 
+export const useIsLocated = (): boolean => {
+  const state = useSerdeJsonPathState();
+  if (States.isReady(state)) {
+    return state.isLocated;
+  } else {
+    throw new Error("attempted to useIsLocated before ready");
+  }
+}
+
+export type IsLocatedUpdaterFn = (setTo: boolean) => void;
+
+export const useIsLocatedUpdater = (): IsLocatedUpdaterFn => {
+  const dispatch = useSerdeJsonPathDispatch();
+  return (setTo: boolean) => {
+    dispatch({ tag: "UpdateIsLocated", isLocated: setTo})
+  }
+}
+
 export type ToggleInfoBannerFn = (show: boolean) => void;
 
 export const useToggleInfoBanner = (): ToggleInfoBannerFn => {

@@ -1,6 +1,6 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { useOutput } from "../context/hooks";
+import { Col, Container, Form, Row } from "react-bootstrap";
+import { useIsLocated, useIsLocatedUpdater, useOutput } from "../context/hooks";
 import AceEditor from "react-ace";
 
 const convert = (res: any): any => {
@@ -19,9 +19,15 @@ const convert = (res: any): any => {
 
 const QueryOutput = () => {
   const output = useOutput();
+  const isLocated = useIsLocated();
+  const updateIsLocated = useIsLocatedUpdater();
   const formattedOutput = React.useMemo(() => {
     return JSON.stringify(convert(output), null, 2);
   }, [output]);
+
+  const handleUpdateIsLocated = React.useCallback(() => {
+    updateIsLocated(!isLocated);
+  }, [isLocated, updateIsLocated])
 
   return (
     <Container
@@ -30,6 +36,13 @@ const QueryOutput = () => {
     >
       <Row className="header">
         <Col className="text-center">Query Output</Col>
+        <Col xs="auto" className="d-flex justify-content-end">
+          <Form.Check
+            type="switch"
+            label='Located'
+            onChange={handleUpdateIsLocated}
+          />
+        </Col>
       </Row>
       <Row className="body">
         <Col>

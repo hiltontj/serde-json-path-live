@@ -20,6 +20,7 @@ const reduceLoading: Reducer<States.Loading> = (state, action) => {
       json,
       query,
       queryOutput: [],
+      isLocated: false,
       showInfoBanner: false,
       error: "",
       showError: false,
@@ -38,6 +39,8 @@ const reduceReady: Reducer<States.Ready> = (state, action) => {
   } else if (Actions.isUpdateQueryOutput(action)) {
     const { queryOutput: output } = action;
     return { ...state, queryOutput: output };
+  } else if (Actions.isUpdateIsLocated(action)) {
+    return { ...state, isLocated: action.isLocated };
   } else if (Actions.isToggleInfoBanner(action)) {
     return { ...state, showInfoBanner: !state.showInfoBanner };
   } else if (Actions.isSetError(action)) {

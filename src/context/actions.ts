@@ -1,6 +1,7 @@
 import { Tagged } from ".";
 import {
   WithError,
+  WithIsLocated,
   WithJsonData,
   WithQuery,
   WithQueryOutput,
@@ -12,6 +13,7 @@ export type Action =
   | UpdateQuery
   | UpdateJson
   | UpdateQueryOutput
+  | UpdateIsLocated
   | ToggleInfoBanner
   | SetError
   | ToggleError;
@@ -32,6 +34,12 @@ type UpdateJson = Tagged<"UpdateJson"> & WithJsonData;
 
 export function isUpdateJson(x: Action): x is UpdateJson {
   return x.tag === "UpdateJson";
+}
+
+type UpdateIsLocated = Tagged<"UpdateIsLocated"> & WithIsLocated;
+
+export function isUpdateIsLocated(x: Action): x is UpdateIsLocated {
+  return x.tag === "UpdateIsLocated";
 }
 
 type UpdateQueryOutput = Tagged<"UpdateQueryOutput"> & WithQueryOutput;

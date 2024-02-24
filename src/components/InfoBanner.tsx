@@ -16,11 +16,11 @@ const SerdeJsonPathNpmLink = () => (
 
 const JsonPathSpecLink = () => (
   <a
-    href="https://www.ietf.org/archive/id/draft-ietf-jsonpath-base-20.html"
+    href="https://www.rfc-editor.org/rfc/rfc9535.html"
     target="_blank"
     rel="noreferrer"
   >
-    JSONPath Specification
+    JSONPath Standard
   </a>
 );
 
