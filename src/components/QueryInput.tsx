@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { BiError } from "react-icons/bi";
 import {
-    useIsLocated,
+  useIsLocated,
   useJsonData,
   useOutputUpdater,
   useQuery,
@@ -35,7 +35,9 @@ const QueryInput = () => {
       .then(({ JsonPath }) => {
         const parsedJson = JSON.parse(json);
         const path = JsonPath.parse(query);
-        const output = isLocated ? path.query_located(parsedJson) : path.query(parsedJson);
+        const output = isLocated
+          ? path.query_located(parsedJson)
+          : path.query(parsedJson);
         updateOutput(output);
       })
       .catch((e) => {

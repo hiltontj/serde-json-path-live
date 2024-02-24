@@ -57,16 +57,16 @@ export const useIsLocated = (): boolean => {
   } else {
     throw new Error("attempted to useIsLocated before ready");
   }
-}
+};
 
 export type IsLocatedUpdaterFn = (setTo: boolean) => void;
 
 export const useIsLocatedUpdater = (): IsLocatedUpdaterFn => {
   const dispatch = useSerdeJsonPathDispatch();
   return (setTo: boolean) => {
-    dispatch({ tag: "UpdateIsLocated", isLocated: setTo})
-  }
-}
+    dispatch({ tag: "UpdateIsLocated", isLocated: setTo });
+  };
+};
 
 export type ToggleInfoBannerFn = (show: boolean) => void;
 

@@ -27,7 +27,7 @@ const QueryOutput = () => {
 
   const handleUpdateIsLocated = React.useCallback(() => {
     updateIsLocated(!isLocated);
-  }, [isLocated, updateIsLocated])
+  }, [isLocated, updateIsLocated]);
 
   return (
     <Container
@@ -39,7 +39,7 @@ const QueryOutput = () => {
         <Col xs="auto" className="d-flex justify-content-end">
           <Form.Check
             type="switch"
-            label='Located'
+            label="Located"
             onChange={handleUpdateIsLocated}
           />
         </Col>
