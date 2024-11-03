@@ -16,6 +16,7 @@ export type Ready = Tagged<"Ready"> &
   WithJsonData &
   WithQuery &
   WithQueryOutput &
+  WithIsLocated &
   WithShowInfoBanner &
   WithError &
   WithShowError;
@@ -34,6 +35,10 @@ export interface WithQuery {
 
 export interface WithQueryOutput {
   queryOutput: any[];
+}
+
+export interface WithIsLocated {
+  isLocated: boolean;
 }
 
 export interface WithShowInfoBanner {

@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { BiError } from "react-icons/bi";
 import {
+  useIsLocated,
   useJsonData,
   useOutputUpdater,
   useQuery,
@@ -19,6 +20,7 @@ const QueryInput = () => {
   const showError = useShowError();
   const setError = useSetError();
   const toggleError = useToggleError();
+  const isLocated = useIsLocated();
 
   const handleQueryUpdate = React.useCallback(
     (query: string) => {
@@ -33,14 +35,16 @@ const QueryInput = () => {
       .then(({ JsonPath }) => {
         const parsedJson = JSON.parse(json);
         const path = JsonPath.parse(query);
-        const output = path.query(parsedJson);
+        const output = isLocated
+          ? path.query_located(parsedJson)
+          : path.query(parsedJson);
         updateOutput(output);
       })
       .catch((e) => {
         const message = `Error: ${e as string}`;
         setError(message);
       });
-  }, [json, query, updateOutput, setError]);
+  }, [json, query, updateOutput, setError, isLocated]);
 
   return (
     <Container fluid>
