@@ -1,4 +1,4 @@
-# $.erde.json.path
+# JSONPath Sandbox
 
 This is the code repository for [serdejsonpath.live](https://serdejsonpath.live).
 
