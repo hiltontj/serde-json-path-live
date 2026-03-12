@@ -1,0 +1,14 @@
+[application]
+name = "serde-json-live"
+default_platform = "web"
+
+[web.app]
+title = "JSONPath Sandbox"
+
+[web.resource]
+style = []
+script = []
+
+[web.resource.dev]
+style = []
+script = []
