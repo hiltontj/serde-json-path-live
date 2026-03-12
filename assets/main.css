@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap');
+
+:root {
+    --bg: #282c34;
+    --bg-light: #2c313a;
+    --border: #4f5153;
+    --text: #abb2bf;
+    --text-muted: #6b7280;
+    --orange: #e5840f;
+    --red: #e06c75;
+    --blue: #61afef;
+    --green: #98c379;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "Source Code Pro", "Courier New", monospace;
+    -webkit-font-smoothing: antialiased;
+}
+
+#main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    padding: 1rem 1.5rem;
+    text-align: center;
+}
+
+.header h1 {
+    color: var(--orange);
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: inline;
+}
+
+.header-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.info-btn:hover {
+    color: var(--text);
+    border-color: var(--text);
+}
+
+/* Query bar */
+.query-bar {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 1.5rem 0.75rem;
+}
+
+.query-input {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.query-input:focus {
+    outline: none;
+    border-color: var(--orange);
+}
+
+.run-btn {
+    padding: 0.5rem 1.5rem;
+    background: var(--orange);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.run-btn:hover {
+    opacity: 0.9;
+}
+
+.run-btn.error {
+    background: var(--red);
+    cursor: default;
+}
+
+/* Banners */
+.banner {
+    margin: 0 1.5rem 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    position: relative;
+}
+
+.banner-info {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+}
+
+.banner-error {
+    background: #3b2024;
+    border: 1px solid var(--red);
+    color: var(--red);
+}
+
+.banner-dismiss {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.banner a {
+    color: var(--blue);
+}
+
+.banner p {
+    margin: 0.5rem 0;
+}
+
+.banner h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+/* Editor panels */
+.editors {
+    flex: 1 1 auto;
+    display: flex;
+    gap: 0;
+    min-height: 0;
+    padding: 0 1.5rem;
+}
+
+.editor-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.editor-label {
+    text-align: center;
+    padding: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.editor-label-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.25rem;
+}
+
+.editor-panel textarea {
+    flex: 1;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.85rem;
+    padding: 0.75rem;
+    resize: none;
+    tab-size: 2;
+}
+
+.editor-panel textarea:focus {
+    outline: none;
+    border-color: var(--orange);
+}
+
+/* Located toggle */
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.toggle-label input[type="checkbox"] {
+    accent-color: var(--orange);
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid var(--border);
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.footer a {
+    color: var(--text-muted);
+    margin: 0 0.4rem;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--text);
+}
+
+.serde-json-path {
+    color: var(--orange);
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .editors {
+        flex-direction: column;
+    }
+
+    .editor-panel textarea {
+        min-height: 200px;
+    }
+
+    .query-bar {
+        flex-direction: column;
+    }
+}
